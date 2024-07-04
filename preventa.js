@@ -1,6 +1,5 @@
 module.exports = (io) => {
     const preventa = io.of('/preventa')
-    console.log('si se importo preventa')
     preventa.on('connection', (pvt) => {
         console.log(`Conexion Id ${pvt.id}`);
         console.log(`conexion desde preventa ${pvt.id}`)
@@ -20,6 +19,11 @@ module.exports = (io) => {
             pvt.on('CreacionPedido', (parametros) => {
                 console.log(parametros._store)
                 preventa.to(room).emit('PedidoCreado',parametros)
+            })
+
+            pvt.on('ChangeStateConfig',(params) => {
+                console.log(params)
+                preventa.to(room).emit('changeStateConfig',params)
             })
         })
         pvt.on('disconnect',() =>{
