@@ -21,6 +21,17 @@ module.exports = (io) => {
                 preventa.to(room).emit('PedidoCreado',parametros)
             })
 
+            pvt.on('ChangeStatusOrder', (params) => {
+                // console.log(params)
+                preventa.to(room).emit('updOrder',params)
+                if(params._state == 2){
+                    preventa.to(room).emit('Checkin',params)
+                    preventa.to(room).emit('updOrder',params)
+                // }else if(params._state == 3){
+                //     preventa.to(room).emit('updOrder',params)
+                }
+            })
+
             pvt.on('ChangeStateConfig',(params) => {
                 console.log(params)
                 preventa.to(room).emit('changeStateConfig',params)
