@@ -10,6 +10,8 @@ const io = new Server({ cors: { origin: allowedSites } });
 
 require('./preventa.js')(io)
 require('./resurtido.js')(io)
+require('./indicators.js')(io)
+
 
 io.on('connection', (socket) => {
   console.log(socket.id);
