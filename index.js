@@ -1,6 +1,7 @@
 const allowedSites = [
   'http://localhost:9000',
   'http://192.168.10.160:9000',
+  'http://192.168.10.238:1208',
 
 ];
 
