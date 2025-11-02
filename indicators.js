@@ -9,5 +9,8 @@ module.exports = (io) => {
             console.log(param.id)
             indicators.emit('NotifyForm',param)
         })
+        ind.on('disconnect',() =>{
+            console.log('medesconecte de Indicadores');
+        })
     }) 
 }
